@@ -18,7 +18,7 @@ class Database extends PDO{
     private $con;
 
     public function __construct(){
-        $this->con = new PDO("mysql:dbname=$this->DB_NAME;host=$this->DB_HOST;port=$this->DB_PORT;user=$this->DB_USER;password=$this->DB_PASSWORD");
+        parent::__construct("mysql:dbname=$this->DB_NAME;host=$this->DB_HOST;port=$this->DB_PORT;user=$this->DB_USER;password=$this->DB_PASSWORD");
     }
 
     /**
@@ -57,7 +57,7 @@ class Database extends PDO{
     * @return PDOStatement
     */
     public function executeQuery(string $query, array $parameters = []){
-        $stmt = $this->con->prepare($query);
+        $stmt = $this->prepare($query);
         $this->mountQuery($stmt, $parameters);
         $stmt->execute();
         return $stmt;

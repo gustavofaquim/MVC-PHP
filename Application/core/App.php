@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 class App{
     protected $controller  = 'Home';
     protected $method = 'index';
-    protected $pag404 = false;
+    protected $page404 = false;
     protected $params = [];
 
     public function __construct(){
@@ -19,8 +19,9 @@ class App{
         $this->getControllerFromUrl($URL_ARRAY);
         $this->getMethodFromUrl($URL_ARRAY);
         $this->getParamsFromUrl($URL_ARRAY);
-
-        call_user_func_array([$this->controller,$this->method], $this->params);
+        
+        call_user_func_array([$this->controller, $this->method], $this->params);
+        
     }
 
     /**
@@ -88,4 +89,6 @@ class App{
             $this->params = array_slice($url,2);
         }
     }
+
+    
 }

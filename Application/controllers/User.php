@@ -1,6 +1,7 @@
 <?php 
 
 use Application\core\Controller;
+use Application\controllers\Home;
 
 class User extends Controller{
 
@@ -20,6 +21,40 @@ class User extends Controller{
         $this->pageNotFound();
       }
     }
+
+    public function create(){
+      $this->view('user/create');
+    }
+
+    public function save(){
+      if(isset($_POST['user']) && isset($_POST['idade'])){
+        $users = $this->model('Users');
+        $data = $users::salvar($_POST['user'],$_POST['idade']);
+       
+        $this->view('home/index');
+       
+      }
+    }
+
+    public function edit($id){
+      if(isset($id)){
+        $users = $this->model('Users');
+        $data = $users::buscarPorId($id);
+
+        $this->view('user/edit', ['user' => $data]);
+      }
+    }
+
+    public function update(){
+      if(isset($_POST['user']) && isset($_POST['idade']) && isset($_POST['id'])){
+        $users = $this->model('Users');
+        $data = $users::atualizar($_POST['user'], $_POST['idade'], $_POST['id']);
+      }
+      $this->home();
+      
+    }
+    
+    //Save
 }
 
 ?>
