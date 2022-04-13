@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-8 offset-2" style="margin-top:100px">
 
-      <form action='/user/update' method='post'>
+      <form action='/user/update' method='post' >
         <div class="form-group">
             <label for="user">Pessoa</label>
             <?php foreach ($data['user'] as $user) { ?>
