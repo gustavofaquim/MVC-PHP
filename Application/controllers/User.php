@@ -31,7 +31,7 @@ class User extends Controller{
         $users = $this->model('Users');
         $data = $users::salvar($_POST['user'],$_POST['idade']);
        
-        $this->view('home/index');
+        $this->home();
        
       }
     }
@@ -52,6 +52,14 @@ class User extends Controller{
       }
       $this->home();
       
+    }
+
+    public function delete($id){
+      if(isset($id)){
+        $users = $this->model('Users');
+        $data = $users::apagar($id);
+      }
+      $this->home();
     }
     
     //Save

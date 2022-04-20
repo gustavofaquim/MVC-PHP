@@ -92,6 +92,22 @@ class Users {
 
         return $result;
     }
+
+    public static function apagar($id){
+        $con = new Database();
+        $query = 'DELETE FROM users WHERE id = :id';
+        $stmt = $con->prepare($query);
+        $stmt->bindParam(':id', $id);
+
+        $result = $stmt->execute();
+
+        if (!$result){
+            var_dump( $stmt->errorInfo() );
+            exit;
+        }
+        
+        return $result;
+    }
 }
 
 ?>

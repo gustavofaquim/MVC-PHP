@@ -9,15 +9,18 @@ error_reporting(E_ALL);
     <meta charset="utf-8">
     <title>MVC</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="https://kit.fontawesome.com/da47ed77ef.js" crossorigin="anonymous"></script>
   </head>
   <body>
 
   <?php
     require '../Application/autoload.php';
-
+    
+    session_start();
     use Application\core\App;
     use Application\core\Controller;
-
+    
     $app = new App();
 
   ?>
