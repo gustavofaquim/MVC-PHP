@@ -47,7 +47,7 @@ class Controller{
   public function home(){
     $this->view('home/index');
   }
-
+ 
 
 }
 

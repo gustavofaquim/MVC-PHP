@@ -19,9 +19,14 @@ error_reporting(E_ALL);
     
     session_start();
     use Application\core\App;
-    use Application\core\Controller;
-    
+    use Application\controllers\Login;
+
+    $aut = new Login();
+    $aut->verificarLogado();
     $app = new App();
+    
+    
+    
 
   ?>
   <script src="/assets/js/jquery.slim.min.js"></script>

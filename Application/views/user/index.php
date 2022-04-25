@@ -8,13 +8,15 @@
         $msg = new Message();
         
         $msg->flash("greeting", "Hi there", FLASH_SUCCESS); 
-      ?>  
+      ?> 
+      
       <table class="table" id='table-user'>
           <thead>
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <th scope="col">Idade</th>
+              <th scope="col">Grupo</th>
               <th scope="col">Editar</th>
               <th scope="col">Apagar</th>
             </tr>
@@ -22,11 +24,12 @@
           <tbody>
             <?php foreach ($data['users'] as $user) { ?>
             <tr>
-              <td><?= $user['id'] ?></td>
-              <td><?= $user['nome'] ?></td>
-              <td><?= $user['idade'] ?></td>
-              <td><a href='/user/edit/<?= $user['id'] ?>'><i class="fa-solid fa-pen-to-square"></i></a></td>
-              <td><a href='/user/delete/<?= $user['id'] ?>'><i class="fa-solid fa-ban"></i></a></td>
+              <td><?= $user->__get('id') ?></td>
+              <td><?= $user->nome ?></td> <!--  Isso não deveria funcionar, deveria ser privado  --> 
+              <td><?= $user->__get('nascimento') ?></td>
+              <td><?= $user->__get('grupo')->__get('nome') ?></td>
+              <td><a href="/user/edit/<?= $user->__get('id') ?>"><i class="fa-solid fa-pen"></a></td>
+              <td><a href="/user/delete/<?= $user->__get('id') ?>"><i class="fa-solid fa-ban"></i></a></td>
             </tr>
             <?php }?>
           </tbody>

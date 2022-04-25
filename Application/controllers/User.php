@@ -8,6 +8,7 @@ class User extends Controller{
     public function index(){
         $Users = $this->model('Users'); // é retornado o model Users()
         $data = $Users::listarTodos(); // lista todos os usuários
+        
         $this->view('user/index', ['users' => $data]);
     }
 
@@ -27,10 +28,10 @@ class User extends Controller{
     }
 
     public function save(){
-      if(isset($_POST['user']) && isset($_POST['idade'])){
+      if(isset($_POST['user']) && isset($_POST['sobrenome']) && isset($_POST['nascimento']) &&  isset($_POST['grupo'])){
         $users = $this->model('Users');
-        $data = $users::salvar($_POST['user'],$_POST['idade']);
-       
+        $data = $users::salvar($_POST['user'],$_POST['sobrenome'], $_POST['nascimento'], 1, $_POST['grupo']);
+        
         $this->home();
        
       }

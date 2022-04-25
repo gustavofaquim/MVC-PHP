@@ -1,6 +1,7 @@
 <?php 
 
 use Application\core\Controller;
+use Application\controllers\Login;
 
 class Home extends Controller{
 
