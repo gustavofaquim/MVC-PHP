@@ -20,7 +20,7 @@ class App{
         $this->getControllerFromUrl($URL_ARRAY);
         $this->getMethodFromUrl($URL_ARRAY);
         $this->getParamsFromUrl($URL_ARRAY);
-        
+       
         call_user_func_array([$this->controller, $this->method], $this->params);
         
     }
@@ -52,8 +52,10 @@ class App{
             }else{
                 $this->page404 = true;
             }
-        }   
+        }
         require('../Application/controllers/'. $this->controller . '.php');
+        
+          
         $this->controller = new $this->controller();
     }
 

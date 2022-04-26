@@ -16,13 +16,15 @@ error_reporting(E_ALL);
 
   <?php
     require '../Application/autoload.php';
-    
+
+    require '../Application/controllers/Login';
+
     session_start();
     use Application\core\App;
-    use Application\controllers\Login;
+    
 
     $aut = new Login();
-    $aut->verificarLogado();
+    //$aut->verificarLogado();
     $app = new App();
     
     
