@@ -13,6 +13,7 @@ class Login {
     //private int $sessao;
     //private int $ativo;
     private Users $user;
+    private bool $resultado = false;
 
 
     public function __construct(){
@@ -28,24 +29,20 @@ class Login {
     }
 
 
-    public static function verificarLogin($user,$senha){
+    public static function logar($users,$senha){
         $con = new Database();
         
         $result = $con->executeQuery('SELECT * FROM usuarios where user = :user and senha = :senha and situacao = 1 LIMIT 1', array(
-            ':user' => $user,
+            ':user' => $users,
             ':senha' => $senha
         ));
 
         $result = $result->fetch(PDO::FETCH_OBJ);
         if($result){
-             //var_dump($result);
-
             $login = new Login();
-
             $usuario = new Users();
+            
             $usuario = $usuario::buscarPorId($result->id);
-
-            //var_dump($usuario);
 
             return $usuario;
         }else{

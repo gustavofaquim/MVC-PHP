@@ -14,25 +14,28 @@ class Login extends Controller{
 
   public function logar(){
        if(isset($_POST['email']) && isset($_POST['senha'])){
-          echo "Entrouuuuu";
           $email= $_POST['email'];
           $senha = $_POST['senha'];
           
           $aut = $this->model('Login');
-          $data = $aut::verificarLogin($email,$senha);
-          
-          var_dump("Entrouuuu");
+          $data = $aut::logar($email,$senha);
           
           if($data){
-              $msg = 'Usuários logado com sucesso';
+              $_SESSION['msg'] = 'Usuários logado com sucesso';
               $_SESSION['logado'] = True;
-              echo $msg;
+              $_SESSION['user'] = $data;
               $this->home();
+              
           }else{
-              $msg = 'Usuário não encontrado';
-              echo $msg;
+              $_SESSION['msg']  = 'Usuário não encontrado';
+              $this->index();
           }
        }
+  }
+
+  public function logout(){
+    session_destroy(); 
+    $this->index();
   }
 
   public function verificarLogado(){

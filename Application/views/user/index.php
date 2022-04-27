@@ -34,7 +34,7 @@
             <?php }?>
           </tbody>
         </table>
-        <a class="btn btn-primary" href="/" role="button">Home</a>
+        <a class="btn btn-primary" href="/home/" role="button">Home</a>
       </div>
     </div>
   </div>

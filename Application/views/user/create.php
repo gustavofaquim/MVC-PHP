@@ -20,7 +20,7 @@
        
         <button type="submit" class="btn btn-primary">Salvar</button>
       </form>
-      <a href="/">Home</a>
+      <a href="/home/">Home</a>
       </div>
     </div>
   </div>

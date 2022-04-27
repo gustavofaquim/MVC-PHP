@@ -2,7 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2" style="margin-top:100px">
+        <?php
         
+        if(isset($_SESSION['msg'])){
+          echo "<div class='alert alert-danger' role='alert'>".$_SESSION['msg']."</div>";  
+        } 
+        
+        ?>
         <form action="/login/logar" method="post">
           <div class="form-group">
             <label for="email">Endereço de email ou Usuário</label>

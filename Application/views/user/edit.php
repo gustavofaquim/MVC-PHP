@@ -16,7 +16,7 @@
        
         <button type="submit" class="btn btn-primary">Atualizar</button>
       </form><br>
-      <a href="/">Home</a>
+      <a href="/home/">Home</a>
       </div>
     </div>
   </div>
