@@ -20,6 +20,7 @@ class Login extends Controller{
           $aut = $this->model('Login');
           $data = $aut::logar($email,$senha);
           
+          
           if($data){
               $_SESSION['msg'] = 'Usuários logado com sucesso';
               $_SESSION['logado'] = True;

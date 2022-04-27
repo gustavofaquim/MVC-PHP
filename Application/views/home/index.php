@@ -6,6 +6,10 @@
         if(isset($_SESSION['user'])){
           echo "<h2> Bem-vindo, ".$_SESSION['user']->nome."</h2>";  
         } 
+
+        echo "<pre>";
+        var_dump($_SESSION['user']);
+        echo"</pre>";
        
       ?>
       <h1>Estrutura MVC PHP</h1>

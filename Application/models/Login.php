@@ -39,7 +39,7 @@ class Login {
 
         $result = $result->fetch(PDO::FETCH_OBJ);
         if($result){
-            $login = new Login();
+            //$login = new Login();
             $usuario = new Users();
             
             $usuario = $usuario::buscarPorId($result->id);
