@@ -24,7 +24,12 @@ class Login extends Controller{
           if($data){
               $_SESSION['msg'] = 'Usuários logado com sucesso';
               $_SESSION['logado'] = True;
-              $_SESSION['user'] = $data;
+            
+              foreach($data as $id => $objeto){
+                var_dump($data, $id);
+                $_SESSION['user'][$id] = $objeto;
+               
+              }
               $this->home();
               
           }else{
