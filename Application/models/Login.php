@@ -48,9 +48,9 @@ class Login {
         }else{
             return Null;
         }
-       
-        
     }    
+
+  
 }
 
 ?>

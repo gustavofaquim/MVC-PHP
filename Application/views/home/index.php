@@ -4,11 +4,9 @@
       <?php 
        
         if(isset($_SESSION['user'])){
-          var_dump($_SESSION['user']);
           echo "<h2> Bem-vindo, ".$_SESSION['user']['nome']."</h2>";  
         } 
 
-       
        
       ?>
       <h1>Estrutura MVC PHP</h1>

@@ -5,6 +5,7 @@
 
 use Application\core\Controller;
 use Application\controllers\Home;
+use Application\models\Users;
 
 class Login extends Controller{
 
@@ -24,12 +25,19 @@ class Login extends Controller{
           if($data){
               $_SESSION['msg'] = 'Usuários logado com sucesso';
               $_SESSION['logado'] = True;
-            
-              foreach($data as $id => $objeto){
-                var_dump($data, $id);
+              
+
+              $usr = new Users();
+              $user = $usr::getIterator($data);
+
+              $_SESSION['user'] = $user;
+
+
+              /*foreach($data as $id => $objeto){
+                var_dump($objeto->__get('$id'));
                 $_SESSION['user'][$id] = $objeto;
                
-              }
+              }*/
               $this->home();
               
           }else{

@@ -14,6 +14,7 @@ class Users {
     private String $sobrenome;
     private String $nascimento;
     private Grupos $grupo; 
+    private int $situacao;
 
 
     public function __construct(){
@@ -150,6 +151,18 @@ class Users {
             exit;
         }
         
+        return $result;
+    }
+
+
+    public static function getIterator($objeto){
+
+        $result = array();
+
+        foreach($objeto as $id => $obj){
+            $result[$id] = $obj;
+        }
+
         return $result;
     }
 }
