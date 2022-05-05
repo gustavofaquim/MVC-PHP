@@ -9,11 +9,20 @@ use PDO;
 
 class Database extends PDO{
     //Configuracao do Banco de dados
+   /* private $DB_NAME = 'epiz_31619959_mcv_php';
+    private $DB_USER = 'epiz_31619959';
+    private $DB_PASSWORD = 'wtf@13Zy';
+    private $DB_HOST = 'sql306.epizy.com';
+    private $DB_PORT = '3306';*/
+
+
+    
     private $DB_NAME = 'mvc_db';
     private $DB_USER = 'gustavo';
     private $DB_PASSWORD = '123456789';
     private $DB_HOST = 'localhost';
     private $DB_PORT = '';
+    
 
     private $con;
 

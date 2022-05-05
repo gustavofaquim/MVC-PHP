@@ -8,6 +8,9 @@
         $msg = new Message();
         
         $msg->flash("greeting", "Hi there", FLASH_SUCCESS); 
+
+      
+        $userC = new User();
       ?> 
       
       <table class="table" id='table-user'>
@@ -15,6 +18,7 @@
             <tr>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
+              <th scope="col">Usuário</th>
               <th scope="col">Idade</th>
               <th scope="col">Grupo</th>
               <th scope="col">Editar</th>
@@ -26,7 +30,8 @@
             <tr>
               <td><?= $user->__get('id') ?></td>
               <td><?= $user->nome ?></td> <!--  Isso não deveria funcionar, deveria ser privado  --> 
-              <td><?= $user->__get('nascimento') ?></td>
+              <td><?= $user->__get('usuario') ?></td> 
+              <td><?= $userC::calculaIdade($user->__get('nascimento')) ?></td>
               <td><?= $user->__get('grupo')->__get('nome') ?></td>
               <td><a href="/user/edit/<?= $user->__get('id') ?>"><i class="fa-solid fa-pen"></a></td>
               <td><a href="/user/delete/<?= $user->__get('id') ?>"><i class="fa-solid fa-ban"></i></a></td>

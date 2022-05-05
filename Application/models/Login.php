@@ -32,7 +32,7 @@ class Login {
     public static function logar($users,$senha){
         $con = new Database();
         
-        $result = $con->executeQuery('SELECT * FROM usuarios where user = :user and senha = :senha and situacao = 1 LIMIT 1', array(
+        $result = $con->executeQuery('SELECT * FROM usuario where user = :user and senha = :senha and situacao = 1 LIMIT 1', array(
             ':user' => $users,
             ':senha' => $senha
         ));

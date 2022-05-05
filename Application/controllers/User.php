@@ -28,9 +28,10 @@ class User extends Controller{
     }
 
     public function save(){
-      if(isset($_POST['user']) && isset($_POST['sobrenome']) && isset($_POST['nascimento']) &&  isset($_POST['grupo'])){
+      if(isset($_POST['nome']) && isset($_POST['sobrenome']) && isset($_POST['senha'])  && isset($_POST['nascimento']) &&  isset($_POST['grupo'])){
         $users = $this->model('Users');
-        $data = $users::salvar($_POST['user'],$_POST['sobrenome'], $_POST['nascimento'], 1, $_POST['grupo']);
+        $user = strtolower($_POST['nome'] . ".". $_POST['sobrenome']);
+        $data = $users::salvar($_POST['nome'],$_POST['sobrenome'], $user, $_POST['senha'], $_POST['nascimento'], 1, $_POST['grupo']);
         
         $this->home();
        
@@ -45,11 +46,13 @@ class User extends Controller{
         $this->view('user/edit', ['user' => $data]);
       }
     }
-
+    
     public function update(){
-      if(isset($_POST['user']) && isset($_POST['idade']) && isset($_POST['id'])){
+      var_dump($_POST['nome'].' '.$_POST['sobrenome'].' '.$_POST['nascimento'].' '.$_POST['grupo'].' '.$_POST['id']);
+      if(isset($_POST['nome']) && isset($_POST['sobrenome']) && isset($_POST['nascimento']) &&  isset($_POST['grupo']) && isset($_POST['id'])){
         $users = $this->model('Users');
-        $data = $users::atualizar($_POST['user'], $_POST['idade'], $_POST['id']);
+        
+        $data = $users::atualizar($_POST['nome'],$_POST['sobrenome'], $_POST['nascimento'], 1, $_POST['grupo'], $_POST['id']);
       }
       $this->home();
       
@@ -63,7 +66,30 @@ class User extends Controller{
       $this->home();
     }
     
-    //Save
+    public function calculaIdade($data){
+      $idade = 0;
+
+      $data_nascimento = date('Y-m-d', strtotime($data));
+
+      $data = explode('-', $data_nascimento);
+      $anoNasc = $data[0];
+      $mesNasc = $data[1];
+      $diaNasc = $data[2];
+
+      $anoAtual = date("Y");
+      $mesAtual = date("m");
+      $diaAtual = date("d");
+
+      $idade = $anoAtual - $anoNasc;
+
+      if ($mesAtual < $mesNasc){
+        $idade -= 1;
+      } 
+      elseif (($mesAtual == $mesNasc) && ($diaAtual <= $diaNasc)){
+        $idade -= 1;
+      }
+      return $idade;
+    }
 }
 
 ?>
