@@ -7,7 +7,7 @@
           <div class="form-group">
           <?php foreach ($data as $id => $user) { ?>
             <label for="user">ID</label>
-            <input type="number" class="form-control" name='id' id="id" aria-describedby="id"  disabled value='<?= $user->__get('id') ?>'>
+            <input type="number" class="form-control" name='id' id="id" aria-describedby="id" value='<?= $user->__get('id') ?>'>
             <br>
             <label for="user">Nome</label>
             <input type="text" class="form-control" name='nome' id="nome" aria-describedby="nome" placeholder="Nome"  value='<?= $user->__get('nome') ?>'>
