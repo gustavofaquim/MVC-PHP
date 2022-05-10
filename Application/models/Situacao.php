@@ -30,7 +30,29 @@ class Situacao{
         $situacao->__set('descricao', $result->descricao);
         
         return $situacao;
-    } 
+    }
+    
+    public static function listarTodos(){
+        $con = new Database();
+
+        $result = $con->executeQuery('SELECT * FROM situacao');
+
+        $situacoes = array();
+        
+        
+        foreach ($result as $id => $objeto) {
+            $situacao = new Situacao();
+            $situacao->__set('id', $objeto->id);
+            $situacao->__set('descricao', $objeto->descricao);
+
+            $situacoes[] = $situacao;
+        }
+
+        return $situacoes;
+
+
+
+    }
 }
 
 ?>

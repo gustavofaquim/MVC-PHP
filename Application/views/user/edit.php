@@ -32,8 +32,11 @@
             </select>
             <br>
             <label>Situação</label><br>
-            <input type="radio" id='sit' name='sit' value='<?= $user->__get('id') ?>'> Ativo 
-            <input type="radio" id='sit' name='sit'> Desativo 
+            <?php
+              
+            ?>
+            <input type="radio" id='sit' name='sit' value='<?php $user->__get('situacao')->__get('id') ?>'> Ativo 
+            
             <?php } ?>
           </div>
        

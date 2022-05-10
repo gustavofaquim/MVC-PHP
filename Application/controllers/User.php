@@ -2,6 +2,7 @@
 
 use Application\core\Controller;
 use Application\controllers\Home;
+use Application\models\Situacao;
 
 class User extends Controller{
 
@@ -42,15 +43,16 @@ class User extends Controller{
       if(isset($id)){
         $users = $this->model('Users');
         $data = $users::buscarPorId($id);
-
-        $this->view('user/edit', ['user' => $data]);
+        $sit = new Situacao();
+        $lista = $sit::listarTodos();
+        $this->view('user/edit', ['user' => $data, 'list' => $lista]);
       }
     }
     
     public function update(){
       
       if(isset($_POST['nome']) && isset($_POST['sobrenome']) && isset($_POST['nascimento']) &&  isset($_POST['grupo']) && isset($_POST['id'])){
-        
+        echo "SIT: ". $_POST['sit'];
         $users = $this->model('Users');
         $id = $_POST['id'];
         
