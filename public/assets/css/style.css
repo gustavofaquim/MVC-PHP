@@ -1,0 +1,9 @@
+.top-menu {
+  background-color: rgba(0, 0, 0, 0.85); }
+  .top-menu a {
+    color: #999; }
+  .top-menu a:hover {
+    color: #FFFF; }
+
+.rodape {
+  background-color: #F8F9FA; }

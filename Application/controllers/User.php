@@ -49,14 +49,12 @@ class User extends Controller{
       }
     }
     
-    public function update(){
+    public function update($id){
       
-      if(isset($_POST['nome']) && isset($_POST['sobrenome']) && isset($_POST['nascimento']) &&  isset($_POST['grupo']) && isset($_POST['id'])){
-        echo "SIT: ". $_POST['sit'];
+      if(isset($_POST['nome']) && isset($_POST['sobrenome']) && isset($_POST['nascimento']) &&  isset($_POST['grupo']) && isset($id) && isset($_POST['situacao'])){
         $users = $this->model('Users');
-        $id = $_POST['id'];
         
-        $data = $users::atualizar($_POST['nome'],$_POST['sobrenome'], $_POST['nascimento'], 1, $_POST['grupo'], $id);
+        $data = $users::atualizar($_POST['nome'],$_POST['sobrenome'], $_POST['nascimento'], 1, $_POST['grupo'], $id, $_POST['situacao']);
         
       }
       $this->home();

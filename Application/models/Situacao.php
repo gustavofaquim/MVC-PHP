@@ -7,7 +7,7 @@ use PDO;
 
 class Situacao{
 
-    private String $id;
+    private int $id;
     private String $descricao;
 
     public function __get($atributo){
@@ -39,6 +39,7 @@ class Situacao{
 
         $situacoes = array();
         
+        $result = $result->fetchAll(PDO::FETCH_OBJ);
         
         foreach ($result as $id => $objeto) {
             $situacao = new Situacao();

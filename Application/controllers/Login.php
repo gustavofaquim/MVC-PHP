@@ -29,7 +29,6 @@ class Login extends Controller{
 
               $usr = new Users();
               $user = $usr::getIterator($data);
-
               $_SESSION['user'] = $user;
 
 
@@ -38,6 +37,7 @@ class Login extends Controller{
                 $_SESSION['user'][$id] = $objeto;
                
               }*/
+              //var_dump($_SERVER["REQUEST_URI"]);
               $this->home();
               
           }else{
@@ -52,7 +52,7 @@ class Login extends Controller{
     $this->index();
   }
 
-  public function verificarLogado(){
+  /*public function verificarLogado(){
 
     if(isset($_SESSION['logado'])){
       if($_SESSION['logado'] == True){
@@ -66,7 +66,7 @@ class Login extends Controller{
       $this->index();
     }
     
-  }
+  }*/
   
 }
 

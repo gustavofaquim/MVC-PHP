@@ -32,8 +32,19 @@ class Controller{
   * @param  array   $data   São os dados que serão exibido na view
   */
   public function view(string $view, $data = []){
-    require('../Application/views/'. $view. '.php'); 
+    if(isset($_SESSION['logado'])){
+
+      if($_SESSION['logado'] == True){
+        require('../Application/views/'. $view. '.php'); 
+      }else{
+        require('../Application/views/login/login.php'); 
+      }
+    }else{
+        require('../Application/views/login/login.php'); 
+    }
+    
   }
+
 
 
   /**

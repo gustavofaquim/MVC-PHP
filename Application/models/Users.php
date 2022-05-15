@@ -129,15 +129,16 @@ class Users {
         return $result;
     }
 
-    public static function atualizar($nome,$sobrenome,$nascimento,$situacao,$grupo,$id){
+    public static function atualizar($nome,$sobrenome,$nascimento,$situacao,$grupo,$id, $sit){
         $con = new Database();
         
-        $query = 'UPDATE usuario SET nome = :nome, sobrenome = :sobrenome, nascimento = :nascimento, grupo = :grupo WHERE id = :id';
+        $query = 'UPDATE usuario SET nome = :nome, sobrenome = :sobrenome, nascimento = :nascimento, grupo = :grupo, situacao = :situacao  WHERE id = :id';
         $stmt = $con->prepare($query);
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':sobrenome', $sobrenome);
         $stmt->bindParam(':nascimento', $nascimento);
         $stmt->bindParam(':grupo', $grupo);
+        $stmt->bindParam(':situacao', $sit);
         $stmt->bindParam(':id', $id);
 
         $result = $stmt->execute();

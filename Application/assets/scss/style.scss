@@ -1,3 +1,18 @@
 $base-font-size: 16px;
 $color-base: red;
+$cor-menu: rgba(0, 0, 0, .85);
+$cor-radape: #F8F9FA;
 
+.top-menu{
+    background-color:  $cor-menu;
+    a{
+        color: #999;
+    }
+    a:hover{
+        color: #FFFF;
+    }
+}
+
+.rodape{
+    background-color: $cor-radape;
+}
