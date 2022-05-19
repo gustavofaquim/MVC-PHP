@@ -4,7 +4,7 @@
       <div class="col-8 offset-2" style="margin-top:100px">
      
   
-      <form action='/user/update/4' method='post'>
+      <form action='/user/update/4' method='post' id='form-att'>
           <div class="form-group">
           <?php  $user = $data['user'];?>
             
@@ -31,7 +31,7 @@
             </select>
             <br>
             <label>Situação</label><br>
-            <select name='situacao'>
+            <select name='situacao' id='sit'>
               <?php foreach ($data['list'] as $id => $list){  ?>
                 <option value='<?php echo $list->__get('id') ?>' <?php if($list->__get('id') == $user->__get('situacao')->__get('id')){ echo 'selected';} ?>  > <?php echo $list->__get('descricao') ?></option>
               <?php }  ?>
@@ -41,10 +41,48 @@
           </div>
        
        
-      <button type="submit" class="btn btn-primary">Atualizar</button>
+      <button type="button" name='bt-att' id='bt-att' class="btn btn-primary bt-att" >Atualizar</button>
       </form><br>
       <a href="/home/">Home</a>
       </div>
     </div>
   </div>
+
+  <script>
+
+    $('document').ready(function(){
+    
+      $("#bt-att").click(function(){
+        var data = $("#form-att").serialize();
+        //alert(data);
+
+        var id = "<?=$data['user']->__get('id')?>";
+          
+        $.ajax({
+          type : 'POST',
+          url  : '/user/update/' + id,
+          data : data,
+          dataType: 'json',
+          beforeSend: function()
+          {	
+            $("#bt-att").html('Validando ...');
+          },
+          success : function(response){						
+            if(response.codigo == "1"){	
+              $("#bt-att").html('Atualizar');
+              alert(response.mensagem);//$("#login-alert").css('display', 'none')
+              window.location.href = "home.php";
+            }
+            else{			
+              $("#bt-att").html('Atualizar');
+              $("#login-alert").css('display', 'block')
+              $("#mensagem").html('<strong>Erro! </strong>' + response.mensagem);
+            }
+            }
+        });
+      });
+    
+    });
+      
+  </script>
 </main>

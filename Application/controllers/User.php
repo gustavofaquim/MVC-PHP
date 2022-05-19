@@ -50,14 +50,22 @@ class User extends Controller{
     }
     
     public function update($id){
-      
       if(isset($_POST['nome']) && isset($_POST['sobrenome']) && isset($_POST['nascimento']) &&  isset($_POST['grupo']) && isset($id) && isset($_POST['situacao'])){
         $users = $this->model('Users');
-        
+        var_dump('Aloooooooo');
         $data = $users::atualizar($_POST['nome'],$_POST['sobrenome'], $_POST['nascimento'], 1, $_POST['grupo'], $id, $_POST['situacao']);
         
+        if($data){
+          $retorno = array('codigo' => 1, 'mensagem' => 'Atualizado com sucesso!');
+          echo json_encode($retorno);
+          exit();
+        }else{
+          $retorno = array('codigo' => 0, 'mensagem' => 'Erro na atulização de dados');
+          echo json_encode($retorno);
+          exit();
+        }
       }
-      $this->home();
+      //$this->home();
       
     }
 

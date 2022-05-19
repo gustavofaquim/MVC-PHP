@@ -3,13 +3,7 @@
     <div class="row">
       <div class="col-8 offset-2" style="margin-top:100px">
       <?php 
-        use Application\plugins\Message;
     
-        $msg = new Message();
-        
-        $msg->flash("greeting", "Hi there", FLASH_SUCCESS); 
-
-      
         $userC = new User();
       ?> 
       

@@ -145,11 +145,12 @@ class Users {
  
 
         if (!$result){
-            var_dump( $stmt->errorInfo() );
+            //var_dump( $stmt->errorInfo() );
+            return False;
             exit;
         }
 
-        return $result;
+        return True;
     }
 
     public static function apagar($id){
