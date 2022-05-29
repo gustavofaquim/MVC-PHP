@@ -62,7 +62,7 @@
           type : 'POST',
           url  : '/user/update/' + id,
           data : data,
-          dataType: 'json',
+          dataType: 'html',
           beforeSend: function()
           {	
             $("#bt-att").html('Validando ...');
@@ -75,8 +75,9 @@
             }
             else{			
               $("#bt-att").html('Atualizar');
-              $("#login-alert").css('display', 'block')
-              $("#mensagem").html('<strong>Erro! </strong>' + response.mensagem);
+              alert(response.retorno);
+              //$("#login-alert").css('display', 'block')
+              //$("#mensagem").html('<strong>Erro! </strong>' + response.mensagem);
             }
             }
         });

@@ -31,6 +31,17 @@ foreign key(situacao) references situacao (id),
 foreign key(grupo) references grupo (id)
 );
 
+
+CREATE TABLE post(
+    id int not null auto_increment,
+    titulo varchar(50) not null,
+    subtitulo varchar(100) not null,
+    texto longtext not null,
+    usuario int not null,
+    primary key(id),
+    foreign key(usuario) references usuario (id) 
+);
+
 INSERT INTO situacao (id,descricao) VALUES
 (1, 'ativo'),
 (2, 'desativado'),
@@ -43,3 +54,4 @@ INSERT INTO grupo (id, nome, situacao) VALUES
 INSERT INTO usuario (id, nome, sobrenome, user, senha, nascimento, situacao, grupo) VALUES
 (1, 'Gustavo', 'Faquim', 'gustavo.faquim', '123456789', '1999-11-15', 1, 2),
 (2, 'Fulano', 'de Tal', '', 'fulano.tal', '1998-01-01', 1, 1);
+

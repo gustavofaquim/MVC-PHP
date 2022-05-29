@@ -33,7 +33,8 @@
             <?php }?>
           </tbody>
         </table>
-        <a class="btn btn-primary" href="/home/" role="button">Home</a>
+        <a class="btn btn-primary" href="/user/create/" role="button">+</a>
+        
       </div>
     </div>
   </div>
