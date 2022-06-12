@@ -84,6 +84,41 @@ class Posts{
         return $posts;
     }
 
+
+    public static function listarPorUser($user){
+        $con = new Database();
+    
+        $usuario = new Users();
+        $id =  $usuario->buscarPorUser($user)->__get('id');
+       
+        $result = $con->executeQuery('SELECT * FROM post WHERE usuario = :ID', array(
+            'ID' => $id
+        ));
+
+        $result = $result->fetchAll(PDO::FETCH_OBJ);
+
+        $posts = array();
+        
+
+        foreach($result as $id => $objeto){
+            
+            $post = new Posts();
+        
+            $post->__set('id', $objeto->id);
+            $post->__set('titulo', $objeto->titulo);
+            $post->__set('subtitulo', $objeto->subtitulo);
+            $post->__set('texto', $objeto->texto);
+            
+            $user = $usuario::buscarPorId($objeto->usuario);
+            //var_dump($user);
+            $post->__set('usuario', $user);
+
+            $posts[] = $post;
+        }
+
+        return $posts;
+    }
+
     public static function buscarPorId($id){
         $con = new Database();
 
@@ -137,5 +172,7 @@ class Posts{
 
         return True;
     }
+
+
 
 }

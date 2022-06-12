@@ -40,7 +40,7 @@ class App{
 
 
     /**
-     * Este método verifica se o array informado possui dados na psoição 0 (controlador)
+     * Este método verifica se o array informado possui dados na posicao 0 (controlador)
     * caso exista, verifica se existe um arquivo com aquele nome no diretório Application/controllers
     * e instancia um objeto contido no arquivo, caso contrário a variável $page404 recebe true.
     *

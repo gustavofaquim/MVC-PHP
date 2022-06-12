@@ -7,9 +7,14 @@
           echo "<h2> Bem-vindo, ".$_SESSION['user']['nome']."</h2>";  
         } 
 
+        echo " <h1>Estrutura MVC PHP</h1>";
+
+        
        
       ?>
-      <h1>Estrutura MVC PHP</h1>
+     
+
+      
      
     </div>
   </div>

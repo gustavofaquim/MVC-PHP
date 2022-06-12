@@ -11,9 +11,9 @@
   <body>
 
     <nav class="nav justify-content-center top-menu">
-        <a class="nav-link" href="/home/">Home</a>    
-        <a class="nav-link" href="/user/index/">Usuários</a>
-        <a class="nav-link" href="/post/index/">Post</a>
+        <a class="nav-link" href="/">Home</a>    
+        <a class="nav-link" href="/user/">Usuários</a>
+        <a class="nav-link" href="/post/">Post</a>
         <a class="nav-link" href="/post/create/">+</a>
         <a class="nav-link" href="/login/logout">Sair</a>
     </nav>

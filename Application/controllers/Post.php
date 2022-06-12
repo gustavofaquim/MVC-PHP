@@ -7,18 +7,39 @@ use Application\models\Users;
 
 class Post extends Controller{
 
-    public function index(){
+    /*public function index(){
         $posts = $this->model('Posts'); // é retornado o model Users()
         $data = $posts::listarTodos(); // lista todos os usuários
         
         $this->view('post/index', ['posts' => $data]);
+    }*/
+
+    public function index(){
+        $posts = $this->model('Posts'); // é retornado o model Users()
+        
+        $data = $posts::listarTodos(); 
+    
+        $this->view('post/posts', ['posts' => $data]);
     }
 
-    public function posts(){
-        $posts = $this->model('Posts'); // é retornado o model Users()
-        $data = $posts::listarTodos(); // lista todos os usuários
+    public function posts($usuario){
+        if($usuario != null){
+            $posts = $this->model('Posts');
+           
+            $data = $posts::listarPorUser($usuario); 
+            
+            $this->view('post/posts', ['posts' => $data, 'aux' => True ]); 
+        }
         
-        $this->view('post/posts', ['posts' => $data]);
+    }
+
+    
+    public function read($id){
+        $posts = $this->model('Posts');
+
+        $data = $posts::buscarPorId($id);
+
+        $this->view('post/view', ['post' => $data]);
     }
 
    public function create(){

@@ -105,6 +105,38 @@ class Users {
 
     }
 
+
+    public static function buscarPorUser(String $user){
+        $con = new Database();
+        
+
+        $result = $con->executeQuery('SELECT * FROM usuario WHERE user = :user LIMIT 1', array(
+          ':user' => $user
+        ));
+        
+    
+        $result = $result->fetch(PDO::FETCH_OBJ);
+       
+
+        $usuario = new Users();
+        $grupo = new Grupos();
+        $situacao = new Situacao();
+
+        $usuario->__set('id', $result->id);
+        $usuario->__set('nome', $result->nome);
+        $usuario->__set('usuario', $result->user);
+        $usuario->__set('sobrenome', $result->sobrenome);
+        $usuario->__set('nascimento', $result->nascimento);
+        $situacao = $situacao->buscarPorId($result->situacao);
+        $grupo = $grupo->buscarPorId($result->grupo);
+        
+        $usuario->__set('grupo', $grupo);
+        $usuario->__set('situacao', $situacao);
+
+        return $usuario;
+
+    }
+
     public static function salvar($nome,$sobrenome,$user, $senha, $nascimento,$situacao,$grupo){
         $con = new Database();
         

@@ -3,6 +3,10 @@ $color-base: red;
 $cor-menu: rgba(0, 0, 0, .85);
 $cor-radape: #F8F9FA;
 
+
+span{
+    font-size: 9pt;
+}
 .top-menu{
     background-color:  $cor-menu;
     a{
@@ -19,4 +23,36 @@ $cor-radape: #F8F9FA;
 
 .card-title{
     font-weight: bold;
+}
+
+.card-post{
+    width: 100%;
+    max-height: 220px;
+    margin-bottom: 20px;
+    padding: 20px;
+    text-align: left;
+    /*border-left: 0px solid;
+    border-top: 0px solid;
+    border-right: 0px solid;*/
+}
+
+.titulo{
+    h2{
+        font-weight: bold;
+    }
+}
+.pag-texto{
+    display: block;
+    margin-top: 80px;
+    .card{
+        border: 0px solid;
+    }
+    .card-title, .card-subtitle{
+        text-align: center;
+    }
+    .card-text{
+        margin-top: 80px;
+        text-align: justify;
+        line-height: 2;
+    }
 }
