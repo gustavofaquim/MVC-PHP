@@ -1,3 +1,7 @@
+<?php
+ include "../Application/core/verificaLogin.php";
+
+?>
 <main>
   <div class="container">
     <div class="row">

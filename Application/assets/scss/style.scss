@@ -1,8 +1,17 @@
 $base-font-size: 16px;
-$color-base: red;
+$cor-texto: black;
 $cor-menu: rgba(0, 0, 0, .85);
 $cor-radape: #F8F9FA;
 
+a{
+  text-decoration: none;
+  color: $cor-texto;
+    
+}
+a:hover{
+    text-decoration: none;
+    color: $cor-texto;
+}
 
 span{
     font-size: 9pt;
@@ -44,6 +53,7 @@ span{
 .pag-texto{
     display: block;
     margin-top: 80px;
+
     .card{
         border: 0px solid;
     }
@@ -52,7 +62,11 @@ span{
     }
     .card-text{
         margin-top: 80px;
-        text-align: justify;
+        text-align: justify !important;
         line-height: 2;
+    }
+
+    .autor{
+        font-weight: bold;
     }
 }

@@ -56,7 +56,9 @@ class Post extends Controller{
     }
 
     public function save(){
+        
         if(isset($_POST['titulo']) && isset($_POST['subtitulo']) && isset($_POST['texto'])){
+            
             $post = $this->model('Posts');
             
             $user = new Users();
@@ -66,6 +68,13 @@ class Post extends Controller{
             $post->__set('subtitulo', $_POST['subtitulo']);
             $post->__set('texto', $_POST['texto']);
             $post->__set('usuario', $user);
+            
+            date_default_timezone_set('America/Sao_Paulo');
+            $date = date('Y-m-d H:i');
+            
+            $post->__set('dt_criacao', $date);
+            
+            //$post->__set('dt_craicao', getdate())
 
           
 

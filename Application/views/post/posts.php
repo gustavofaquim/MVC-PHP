@@ -15,7 +15,7 @@
             echo"<div class='card card-post'>";
               echo"<div class='card-body'>";
               echo"<a href='/post/read/".$post->__get('id')."'><h5 class='card-title'>".$post->__get('titulo')."</h5>";
-              echo"<p class='card-text'>".substr($post->__get('texto'), 0,300)."... </p></a>";
+              echo"<p class='card-text'>".substr(strip_tags($post->__get('texto')), 0,300)."... </p></a>";
               if(!isset($data['aux'])){
                 echo"<a href='posts/".$post->__get('usuario')->__get('usuario')."'><span>".$post->__get('usuario')->__get('nome')."</span></a>";
               }

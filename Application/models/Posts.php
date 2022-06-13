@@ -12,6 +12,7 @@ class Posts{
     private String $titulo;
     private String $subtitulo;
     private String $texto;
+    private String $dt_criacao;
     private Users $usuario; //-> Isso aqui não faz o menor sentido...
 
 
@@ -30,17 +31,19 @@ class Posts{
     public static function salvar(Posts $post){
         $con = new Database();
         
-        $query = 'INSERT INTO post (titulo, subtitulo, texto, usuario) VALUES (:titulo, :subtitulo, :texto, :usuario);';
+        $query = 'INSERT INTO post (titulo, subtitulo, texto, dt_criacao, usuario) VALUES (:titulo, :subtitulo, :texto, :dt_criacao, :usuario);';
         $stmt = $con->prepare($query);
 
         $titulo = $post->__get('titulo');
         $subtitulo = $post->__get('subtitulo');
         $texto = $post->__get('texto');
+        $dt_criacao = $post->__get('dt_criacao');
         $usuario = $post->__get('usuario')->__get('id');
 
         $stmt->bindParam(':titulo', $titulo);
         $stmt->bindParam(':subtitulo', $subtitulo);
         $stmt->bindParam(':texto', $texto);
+        $stmt->bindParam(':dt_criacao', $dt_criacao);
         $stmt->bindParam(':usuario', $usuario);
 
         $result = $stmt->execute();
@@ -64,15 +67,18 @@ class Posts{
         $posts = array();
         $usuario = new Users();
 
+       
+
         foreach($result as $id => $objeto){
             
             $post = new Posts();
             
-
             $post->__set('id', $objeto->id);
             $post->__set('titulo', $objeto->titulo);
             $post->__set('subtitulo', $objeto->subtitulo);
             $post->__set('texto', $objeto->texto);
+            $post->__set('dt_criacao', $objeto->dt_criacao);
+           
             
             $user = $usuario::buscarPorId($objeto->usuario);
             //var_dump($user);
@@ -108,6 +114,7 @@ class Posts{
             $post->__set('titulo', $objeto->titulo);
             $post->__set('subtitulo', $objeto->subtitulo);
             $post->__set('texto', $objeto->texto);
+            $post->__set('dt_criacao', $objeto->dt_criacao);
             
             $user = $usuario::buscarPorId($objeto->usuario);
             //var_dump($user);
@@ -136,6 +143,7 @@ class Posts{
         $post->__set('titulo', $objeto->titulo);
         $post->__set('subtitulo', $objeto->subtitulo);
         $post->__set('texto', $objeto->texto);
+        $post->__set('dt_criacao', $objeto->dt_criacao);
 
         $user = $usuario::buscarPorId($objeto->usuario);
         $post->__set('usuario', $user);

@@ -12,9 +12,8 @@
             <label for="subtitulo">Subtitulo</label>
             <input type="text" class="form-control" name='subtitulo' id="subtitulo" aria-describedby="subtitulo">
             <br>
-            <label for='texto'></label>
-            <textarea name="texto" id="texto" cols="30" rows="10"></textarea>
-            <br>
+          
+            <textarea name="texto" id="texto" ></textarea>
             
           </div>
        
@@ -24,5 +23,21 @@
       </div>
     </div>
   </div>
+ 
+  <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
+  <!-- <script src="/Application/vendor/ckeditor5/src/ckeditor.js"></script>!-->
+  <script>
+
+    ClassicEditor
+      .create(document.querySelector('#texto'),{
+        toolbar: [ 'heading', '|', 'bold', 'italic', '', 'bulletedList', 'numberedList', 'blockQuote', 'link','uploadImage']
+      })
+      .catch(error => {
+         console.error(error)
+      })
+  </script>
+
+  
+
 
 </main>

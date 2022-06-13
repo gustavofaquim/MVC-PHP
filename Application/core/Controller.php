@@ -32,7 +32,9 @@ class Controller{
   * @param  array   $data   São os dados que serão exibido na view
   */
   public function view(string $view, $data = []){
-    if(isset($_SESSION['logado'])){
+    //$REQUEST_URI = explode('/', substr(filter_input(INPUT_SERVER, 'REQUEST_URI'), 1));
+    require('../Application/views/'. $view. '.php'); 
+    /*if(isset($_SESSION['logado'])){
 
       if($_SESSION['logado'] == True){
         require('../Application/views/'. $view. '.php'); 
@@ -41,6 +43,12 @@ class Controller{
       }
     }else{
         require('../Application/views/login/login.php'); 
+    }*/
+
+    $u = explode('/', $view);
+    //var_dump($u[1]);
+    if($u[0] == 'user' || ($u[0] == 'post' && $u[1] == 'create')){
+      include "../Application/core/verificaLogin.php";
     }
     
   }

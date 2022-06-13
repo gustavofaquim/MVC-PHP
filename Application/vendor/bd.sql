@@ -38,6 +38,7 @@ CREATE TABLE post(
     subtitulo varchar(100) not null,
     texto longtext not null,
     usuario int not null,
+    dt_criacao datetime,
     primary key(id),
     foreign key(usuario) references usuario (id) 
 );
@@ -52,6 +53,6 @@ INSERT INTO grupo (id, nome, situacao) VALUES
 (2, 'administrador', 1);
 
 INSERT INTO usuario (id, nome, sobrenome, user, senha, nascimento, situacao, grupo) VALUES
-(1, 'Gustavo', 'Faquim', 'gustavo.faquim', '123456789', '1999-11-15', 1, 2),
+(1, 'Gustavo', 'Faquim', 'gustavofaquim', '123456789', '1999-11-15', 1, 2),
 (2, 'Fulano', 'de Tal', '', 'fulano.tal', '1998-01-01', 1, 1);
 

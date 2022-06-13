@@ -11,7 +11,9 @@
             <div class="card-body">
               <h5 class="card-title"><?=  $post->__get('titulo') ?></h5>
               <h6 class="card-subtitle mb-2 text-muted"><?= $post->__get('subtitulo') ?></h6>
-              <p class="card-text"><?= $post->__get('texto') ?></p>
+              <span class='autor'><?php echo $post->__get('usuario')->__get('nome') . " ". $post->__get('usuario')->__get('sobrenome') ?></span><br>
+              <span class='dt'><?php echo $post->__get('dt_criacao')?></span>
+              <div class="card-text"><?= $post->__get('texto') ?></div>
             </div>
           </div>
 
