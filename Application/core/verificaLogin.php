@@ -4,13 +4,13 @@
 
 if(isset($_SESSION['logado'])){
     if($_SESSION['logado'] == True){
-        echo "Logado";
+        $a = '';
     }
     else{
         header('Location: '.'/login/');
-        die();
+        exit();
     }
 }else{
     header('Location: '.'/login/');
-    die();
+    exit();
 }

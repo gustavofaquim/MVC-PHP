@@ -14,11 +14,13 @@
 
             echo"<div class='card card-post'>";
               echo"<div class='card-body'>";
+              if(!isset($data['aux'])){
+                echo"<a class='link-autor' href='posts/".$post->__get('usuario')->__get('usuario')."'><span>".$post->__get('usuario')->__get('nome')."</span></a>";
+
+              }
+              echo"<span> Publicado a ".$post::calcularData($post->__get('dt_criacao'))." dia(s). </span>";
               echo"<a href='/post/read/".$post->__get('id')."'><h5 class='card-title'>".$post->__get('titulo')."</h5>";
               echo"<p class='card-text'>".substr(strip_tags($post->__get('texto')), 0,300)."... </p></a>";
-              if(!isset($data['aux'])){
-                echo"<a href='posts/".$post->__get('usuario')->__get('usuario')."'><span>".$post->__get('usuario')->__get('nome')."</span></a>";
-              }
               echo"</div>";
             echo"</div>";
 

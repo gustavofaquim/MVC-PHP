@@ -24,13 +24,17 @@ span {
 
 .card-post {
   width: 100%;
-  max-height: 220px;
+  max-height: 250px;
   margin-bottom: 20px;
   padding: 20px;
   text-align: left;
   /*border-left: 0px solid;
     border-top: 0px solid;
     border-right: 0px solid;*/ }
+  .card-post .link-autor {
+    font-weight: bold; }
+  .card-post .card-title {
+    margin-top: 20px; }
 
 .titulo h2 {
   font-weight: bold; }
@@ -48,3 +52,17 @@ span {
     line-height: 2; }
   .pag-texto .autor {
     font-weight: bold; }
+
+.container-login {
+  padding: 40px;
+  box-shadow: -5px 9px 17px -10px rgba(0, 0, 0, 0.75); }
+  .container-login .form-login {
+    margin-top: 40px; }
+    .container-login .form-login input:active {
+      border-color: red; }
+  .container-login .btn {
+    width: 100%; }
+  .container-login .btn-cadastrar {
+    margin-top: 10px;
+    background-color: #F5F5F5;
+    color: #999; }

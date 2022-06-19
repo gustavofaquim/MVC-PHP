@@ -24,19 +24,30 @@
     </div>
   </div>
  
-  <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>
-  <!-- <script src="/Application/vendor/ckeditor5/src/ckeditor.js"></script>!-->
-  <script>
-
-    ClassicEditor
-      .create(document.querySelector('#texto'),{
-        toolbar: [ 'heading', '|', 'bold', 'italic', '', 'bulletedList', 'numberedList', 'blockQuote', 'link','uploadImage']
-      })
-      .catch(error => {
-         console.error(error)
-      })
-  </script>
-
+   <!-- <script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>!-->
+   <script src="/assets/vendor/ckeditor5/build/ckeditor.js"></script>
+   <script>ClassicEditor
+				.create( document.querySelector( '#texto' ), {
+					
+					licenseKey: '',
+					
+					
+					
+				} )
+				.then( editor => {
+					window.editor = editor;
+			
+					
+					
+					
+				} )
+				.catch( error => {
+					console.error( 'Oops, something went wrong!' );
+					console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+					console.warn( 'Build id: wweuf6q3753a-hdq8uexdvlds' );
+					console.error( error );
+				} );
+		</script>
   
 
 

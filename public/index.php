@@ -11,7 +11,7 @@ require '../Application/views/template/header.php';
 
   //require '../Application/controllers/Login.php';
 
-  session_start();
+  //session_start();
   use Application\core\App;
   //use Application\controllers\Login;
 

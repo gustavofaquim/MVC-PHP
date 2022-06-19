@@ -181,6 +181,16 @@ class Posts{
         return True;
     }
 
+    public static function calcularData($data_inicial){ // Verificar pq isso não funciona sendo privado
+        date_default_timezone_set('America/Sao_Paulo');
+        $data_final = date('Y-m-d H:i');
+        $diferenca = strtotime($data_final) - strtotime($data_inicial);
+        $dias = floor($diferenca / (60 * 60 * 24)); 
+        return $dias;
+    }
+
+   
+
 
 
 }
