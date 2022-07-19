@@ -51,6 +51,14 @@ class User extends Controller{
     
     public function update($id){
       if(isset($_POST['nome']) && isset($_POST['sobrenome']) && isset($_POST['nascimento']) &&  isset($_POST['grupo']) && isset($id) && isset($_POST['situacao'])){
+        
+        //validações
+
+        $tamanhoMax = 2097152;
+        $permitido = array("jpg", "png", "jpeg");
+        $extensao = pathinfo($_FILES['foto']['name'], PATHINFO_EXTENSION);
+        
+        
         $users = $this->model('Users');
         $data = $users::atualizar($_POST['nome'],$_POST['sobrenome'], $_POST['nascimento'], 1, $_POST['grupo'], $id, $_POST['situacao']);
         

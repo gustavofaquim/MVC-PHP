@@ -19,7 +19,7 @@
         if($_SESSION['logado'] == True){
           echo "<a class='nav-link' href='/'>Home</a>";
           echo "<a class='nav-link' href='/user/'>Usuários</a>";
-          echo "<a class='nav-link' href='/post/'>Post</a>";
+          echo "<a class='nav-link' href='/post/'>Minhas Publicações</a>";
           echo "<a class='nav-link' href='/post/create/'>+</a>";
           echo "<a class='nav-link btn-login' href='/login/logout'>Sair</a>";
         }else{

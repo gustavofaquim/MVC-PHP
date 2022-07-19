@@ -4,10 +4,13 @@
       <div class="col-8 offset-2" style="margin-top:100px">
      
   
-      <form action='/user/update/4' method='post' id='form-att'>
+      <form action='/user/update/' method='post' enctype='multipart/form-data' id='form-att'>
           <div class="form-group">
           <?php  $user = $data['user'];?>
             
+            <input type="file" class="custom-file-input" id="foto" aria-describedby="foto">
+            <label class="custom-file-label" for="foto">Escolher arquivo</label>
+
             <label for="user">Nome</label>
             <input type="text" class="form-control" name='nome' id="nome" aria-describedby="nome" placeholder="Nome"  value='<?= $user->__get('nome') ?>'>
             <br>
@@ -54,7 +57,7 @@
     
       $("#bt-att").click(function(){
         var data = $("#form-att").serialize();
-        //alert(data);
+        alert(data);
 
         var id = "<?=$data['user']->__get('id')?>";
           

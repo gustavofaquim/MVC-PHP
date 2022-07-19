@@ -60,6 +60,7 @@ class Post extends Controller{
         if(isset($_POST['titulo']) && isset($_POST['subtitulo']) && isset($_POST['texto'])){
             
             $post = $this->model('Posts');
+           
             
             $user = new Users();
             $user = $user->buscarPorId($_SESSION['user']['id']);
@@ -79,6 +80,10 @@ class Post extends Controller{
           
 
             $data = $post::salvar($post);
+
+            $data = $post::listarTodos();
+
+            $this->view('post/posts', ['posts' => $data]);
         }
     }
 

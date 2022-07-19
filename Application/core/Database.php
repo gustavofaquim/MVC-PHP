@@ -18,7 +18,7 @@ class Database extends PDO{
 
     
     private $DB_NAME = 'mvc_db';
-    private $DB_USER = 'gustavo';
+    private $DB_USER = 'gustavofaquim';
     private $DB_PASSWORD = '123456789';
     private $DB_HOST = 'localhost';
     private $DB_PORT = '';

@@ -54,5 +54,5 @@ INSERT INTO grupo (id, nome, situacao) VALUES
 
 INSERT INTO usuario (id, nome, sobrenome, user, senha, nascimento, situacao, grupo) VALUES
 (1, 'Gustavo', 'Faquim', 'gustavofaquim', '123456789', '1999-11-15', 1, 2),
-(2, 'Fulano', 'de Tal', '', 'fulano.tal', '1998-01-01', 1, 1);
+(2, 'Fulano', 'de Tal', '', 'fulanotal', '1998-01-01', 1, 1);
 

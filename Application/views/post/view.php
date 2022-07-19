@@ -2,6 +2,7 @@
   <div class="container">
     <div class="row">
       <?php
+        
             $post = $data['post'];
       ?>
       <div class="row">

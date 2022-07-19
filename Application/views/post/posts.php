@@ -4,8 +4,10 @@
       <div class="col-8 offset-2" style="margin-top:100px">
 
       <div class="row">
-
+      
         <?php
+        if($data['posts']){
+        
           if(isset($data['aux'])){
             echo"<h2>".$data['posts'][0]->__get('usuario')->__get('nome')." ".$data['posts'][0]->__get('usuario')->__get('sobrenome')."</h2>";
           }
@@ -25,6 +27,14 @@
             echo"</div>";
 
           }
+        }else{
+          echo"<div class='card'>";
+            echo"<div class='card-body'>";
+            echo"Infelizmente ainda não temos nenhuma postagem para mostrar &#128532 <br>";
+            echo"Faça <a href='/login/'>login</a> e crie a primeira";
+            echo"</div>";
+          echo"</div>";
+        }
         
         ?>
       </div>
