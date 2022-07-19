@@ -3,13 +3,14 @@
     <div class="row">
       <div class="col-8 offset-2" style="margin-top:100px">
      
-  
-      <form action='/user/update/' method='post' enctype='multipart/form-data' id='form-att'>
+                                                         
+      <form action='/user/update/' method='post' enctype="multipart/form-data" id='form-att'>
           <div class="form-group">
           <?php  $user = $data['user'];?>
             
-            <input type="file" class="custom-file-input" id="foto" aria-describedby="foto">
-            <label class="custom-file-label" for="foto">Escolher arquivo</label>
+            <img src="" alt="" id='img-fto'>
+            <input type="file" class="custom-file-input" name="img-fto" aria-describedby="img-fto">
+            <label class="custom-file-label" for="img-fto">Escolher arquivo</label>
 
             <label for="user">Nome</label>
             <input type="text" class="form-control" name='nome' id="nome" aria-describedby="nome" placeholder="Nome"  value='<?= $user->__get('nome') ?>'>
@@ -46,7 +47,6 @@
        
       <button type="button" name='bt-att' id='bt-att' class="btn btn-primary bt-att" >Atualizar</button>
       </form><br>
-      <a href="/home/">Home</a>
       </div>
     </div>
   </div>
@@ -57,6 +57,13 @@
     
       $("#bt-att").click(function(){
         var data = $("#form-att").serialize();
+
+        // Captura os dados do formulário
+        var formulario = document.getElementById('form-att');
+
+        // Instância o FormData passando como parâmetro o formulário
+        var formData = new FormData(formulario);
+
         alert(data);
 
         var id = "<?=$data['user']->__get('id')?>";
@@ -64,8 +71,12 @@
         $.ajax({
           type : 'POST',
           url  : '/user/update/' + id,
-          data : data,
-          dataType: 'html',
+          //data : data,
+          //dataType: 'html',
+          data: formData,
+          dataType: 'json',
+          processData: false,  
+		      contentType: false,
           beforeSend: function()
           {	
             $("#bt-att").html('Validando ...');
@@ -85,6 +96,22 @@
             }
         });
       });
+
+
+      // Carrega a imagem selecionada no elemento <img>
+      $("input[type=file]").on("change", function(){
+            var files = !!this.files ? this.files : [];
+            if (!files.length || !window.FileReader) return;
+    
+            if (/^image/.test( files[0].type)){
+                var reader = new FileReader();
+                reader.readAsDataURL(files[0]);
+    
+                reader.onload = function(){
+                    $("#img-fto").attr('src', this.result);
+                }
+            }
+        }); 
     
     });
       
