@@ -53,67 +53,71 @@
 
   <script>
 
-    $('document').ready(function(){
+$('document').ready(function(){
     
-      $("#bt-att").click(function(){
-        var data = $("#form-att").serialize();
+    $("#bt-att").click(function(){
+      var data = $("#form-att").serialize();
 
-        // Captura os dados do formulário
-        var formulario = document.getElementById('form-att');
+      // Captura os dados do formulário
+      var formulario = document.getElementById('form-att');
 
-        // Instância o FormData passando como parâmetro o formulário
-        var formData = new FormData(formulario);
+      // Instância o FormData passando como parâmetro o formulário
+      var formData = new FormData(formulario);
 
-        alert(data);
+      //alert(formData['img-fto']);
 
-        var id = "<?=$data['user']->__get('id')?>";
-          
-        $.ajax({
-          type : 'POST',
-          url  : '/user/update/' + id,
-          //data : data,
-          //dataType: 'html',
-          data: formData,
-          dataType: 'json',
-          processData: false,  
-		      contentType: false,
-          beforeSend: function()
-          {	
-            $("#bt-att").html('Validando ...');
-          },
-          success : function(response){						
-            if(response.codigo == "1"){	
-              $("#bt-att").html('Atualizar');
-              alert(response.mensagem);//$("#login-alert").css('display', 'none')
-              window.location.href = "home.php";
-            }
-            else{			
-              $("#bt-att").html('Atualizar');
-              alert(response.retorno);
-              //$("#login-alert").css('display', 'block')
-              //$("#mensagem").html('<strong>Erro! </strong>' + response.mensagem);
-            }
-            }
-        });
-      });
+      /*console.log("Form Data");
+      for (let obj of formData) {
+        console.log(obj);
+      }*/
 
-
-      // Carrega a imagem selecionada no elemento <img>
-      $("input[type=file]").on("change", function(){
-            var files = !!this.files ? this.files : [];
-            if (!files.length || !window.FileReader) return;
-    
-            if (/^image/.test( files[0].type)){
-                var reader = new FileReader();
-                reader.readAsDataURL(files[0]);
-    
-                reader.onload = function(){
-                    $("#img-fto").attr('src', this.result);
-                }
-            }
-        }); 
-    
+      var id = "<?=$data['user']->__get('id')?>";
+        
+      $.ajax({
+        type : 'POST',
+        url  : '/user/update/' + id,
+        //data : data,
+        data: formData,
+        dataType: 'html',
+        processData: false,
+        contentType: false,
+        beforeSend: function()
+        {	
+          $("#bt-att").html('Validando ...');
+        },
+        success : function(response){						
+          if(response.codigo == "1"){	
+            $("#bt-att").html('Atualizar');
+            alert(response.mensagem);//$("#login-alert").css('display', 'none')
+            window.location.href = "home.php";
+          }
+          else{			
+            $("#bt-att").html('Atualizar');
+            alert(response.retorno);
+            //$("#login-alert").css('display', 'block')
+            //$("#mensagem").html('<strong>Erro! </strong>' + response.mensagem);
+          }
+          }
+      }); 
     });
+
+
+    // Carrega a imagem selecionada no elemento <img>
+    $("input[type=file]").on("change", function(){
+          var files = !!this.files ? this.files : [];
+          if (!files.length || !window.FileReader) return;
+  
+          if (/^image/.test( files[0].type)){
+              var reader = new FileReader();
+              reader.readAsDataURL(files[0]);
+  
+              reader.onload = function(){
+                  $("#img-fto").attr('src', this.result);
+              }
+          }
+      }); 
+  
+  }); 
       
   </script>
 </main>
