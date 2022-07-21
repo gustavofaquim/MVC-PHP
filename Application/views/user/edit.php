@@ -2,16 +2,28 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2" style="margin-top:100px">
+
+      <?php 
+      
+      ini_set('display_errors',1);
+      ini_set('display_startup_erros',1);
+      error_reporting(E_ALL);
+      
+      ?>
      
                                                          
       <form action='/user/update/' method='post' enctype="multipart/form-data" id='form-att'>
           <div class="form-group">
           <?php  $user = $data['user'];?>
             
-            <img src="" alt="" id='img-fto'>
-            <input type="file" class="custom-file-input" name="img-fto" aria-describedby="img-fto">
-            <label class="custom-file-label" for="img-fto">Escolher arquivo</label>
+            <img src="/imagens/<?= $user->__get('img') ?>" alt="" id='img-pre'> 
+            <input type="hidden"  name='img-atual' value="<?= $user->__get('img') ?> "> 
 
+            <div class="mb-3">
+              <label for="img-fto" class="form-label">Escolha um arquivo</label>
+              <input class="form-control" name='img-fto' type="file" id="img-fto">
+            </div>
+            
             <label for="user">Nome</label>
             <input type="text" class="form-control" name='nome' id="nome" aria-describedby="nome" placeholder="Nome"  value='<?= $user->__get('nome') ?>'>
             <br>
@@ -54,10 +66,14 @@
   <script>
 
 $('document').ready(function(){
-    
-    $("#bt-att").click(function(){
-      var data = $("#form-att").serialize();
 
+    $("#bt-att").click(function(){
+
+      // Verifica se imagem foi anexada.
+      //if ($('#img-fto').files.length === 0) 
+       
+      var data = $("#form-att").serialize();
+    
       // Captura os dados do formulário
       var formulario = document.getElementById('form-att');
 
@@ -112,7 +128,7 @@ $('document').ready(function(){
               reader.readAsDataURL(files[0]);
   
               reader.onload = function(){
-                  $("#img-fto").attr('src', this.result);
+                  $("#img-pre").attr('src', this.result);
               }
           }
       }); 

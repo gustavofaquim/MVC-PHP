@@ -52,28 +52,75 @@ class User extends Controller{
     public function update($id){
       if(isset($_POST['nome']) && isset($_POST['sobrenome']) && isset($_POST['nascimento']) &&  isset($_POST['grupo']) && isset($id) && isset($_POST['situacao'])){
         
+      
+        if($_FILES['img-fto']['size'] > 1){  
 
-        
-        //validações
-        $tamanhoMax = 2097152;
-        $permitido = array("jpg", "png", "jpeg");
-        $extensao = pathinfo($_FILES['img-fto']['name'], PATHINFO_EXTENSION);
-        var_dump($extensao);
-        
+          //validações
+          $tamanhoMax = 200000;
+          $permitido = array("jpg", "png", "jpeg");
+          $extensao = pathinfo($_FILES['img-fto']['name'], PATHINFO_EXTENSION);
+          var_dump($_FILES['img-fto']['size']);
+
+          $msg = '';
+
+
+           //Verificar o tamanho
+          if($_FILES['img-fto']['size'] >= $tamanhoMax){
+            $msg = 'Tamanho máximo de 2MB. Não foi possível autalizar.';
+          }else{
+
+              // Verificar se a extensão é permitida
+              if(in_array($extensao, $permitido)){
+                
+                $pasta = 'imagens/';
+
+                //Verificando se o diretório de imagem existe
+                if(!is_dir($pasta)){
+                  mkdir($pasta,0755);
+                }
+
+                $tmp = $_FILES['img-fto']['tmp_name'];
+                $novoNome = uniqid().".$extensao";
+
+                if(move_uploaded_file($tmp,$pasta.$novoNome)){
+                  $msg = 'Imagem atualziada com sucesso.';
+                }else{
+                 $msg = 'Imagem não atualizada.';
+                }
+
+              }else{
+                $msg = "Erro: Extensão ($extensao) não permitda";
+                $att_img = False;
+              }
+          }
+        }
+
+
+        //Verificando oq vai ser passado na variavel foto.
+        if(isset($novoNome)){
+          $foto = $novoNome;
+        }else if($_POST['img-atual']){
+          $foto = $_POST['img-atual'];
+        }else{
+          $foto = Null;
+        }
+
+        //Chamando metodo de atualização
         $users = $this->model('Users');
-        $data = $users::atualizar($_POST['nome'],$_POST['sobrenome'], $_POST['nascimento'], 1, $_POST['grupo'], $id, $_POST['situacao']);
+        $data = $users::atualizar($_POST['nome'],$_POST['sobrenome'], $_POST['nascimento'], 1, $_POST['grupo'], $id, $_POST['situacao'], $foto);
         
+        
+      
         if($data){
-          $retorno = array('codigo' => 1, 'mensagem' => 'Atualizado com sucesso!');
+          $retorno = array('codigo' => 1, 'mensagem' => 'Atualizado');
           echo json_encode($retorno);
           exit();
         }else{
-          $retorno = array('codigo' => 0, 'mensagem' => 'Erro na atulização de dados');
+          $retorno = array('codigo' => 0, 'mensagem' => 'Não atualizado');
           echo json_encode([$retorno]);
           exit();
         }
       }
-      //$this->home();
       
     }
 

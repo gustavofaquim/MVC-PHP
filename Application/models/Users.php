@@ -17,6 +17,7 @@ class Users {
     private String $nascimento;
     private Grupos $grupo; 
     private Situacao $situacao;
+    private String $img;
 
 
     public function __construct(){
@@ -95,6 +96,7 @@ class Users {
         $usuario->__set('usuario', $result->user);
         $usuario->__set('sobrenome', $result->sobrenome);
         $usuario->__set('nascimento', $result->nascimento);
+        $usuario->__set('img', $result->img);
         $situacao = $situacao->buscarPorId($result->situacao);
         $grupo = $grupo->buscarPorId($result->grupo);
         
@@ -161,16 +163,17 @@ class Users {
         return $result;
     }
 
-    public static function atualizar($nome,$sobrenome,$nascimento,$situacao,$grupo,$id, $sit){
+    public static function atualizar($nome,$sobrenome,$nascimento,$situacao,$grupo,$id, $sit, $img){
         $con = new Database();
-        
-        $query = 'UPDATE usuario SET nome = :nome, sobrenome = :sobrenome, nascimento = :nascimento, grupo = :grupo, situacao = :situacao  WHERE id = :id';
+        var_dump('Entrouuuuuuuuuuuu');
+        $query = 'UPDATE usuario SET nome = :nome, sobrenome = :sobrenome, nascimento = :nascimento, grupo = :grupo, situacao = :situacao, img = :img  WHERE id = :id';
         $stmt = $con->prepare($query);
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':sobrenome', $sobrenome);
         $stmt->bindParam(':nascimento', $nascimento);
         $stmt->bindParam(':grupo', $grupo);
         $stmt->bindParam(':situacao', $sit);
+        $stmt->bindParam(':img', $img);
         $stmt->bindParam(':id', $id);
 
         $result = $stmt->execute();
