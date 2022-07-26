@@ -139,10 +139,12 @@ class Users {
 
     }
 
-    public static function salvar($nome,$sobrenome,$user, $senha, $nascimento,$situacao,$grupo){
+    public static function salvar($nome,$sobrenome,$user, $senha, $nascimento,$situacao,$grupo, $foto){
         $con = new Database();
+
+        var_dump($foto);
         
-        $query = 'INSERT INTO usuario (nome, sobrenome, user, senha, nascimento,situacao,grupo) values (:nome, :sobrenome,:user, :senha, :nascimento, :situacao, :grupo)';
+        $query = 'INSERT INTO usuario (nome, sobrenome, user, senha, nascimento, situacao, grupo,img) values (:nome, :sobrenome,:user, :senha, :nascimento, :situacao, :grupo, :img)';
         $stmt = $con->prepare($query);
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':sobrenome', $sobrenome);
@@ -151,6 +153,8 @@ class Users {
         $stmt->bindParam(':nascimento', $nascimento);
         $stmt->bindParam(':situacao', $situacao);
         $stmt->bindParam(':grupo', $grupo);
+        $stmt->bindParam(':img', $foto);
+
 
         $result = $stmt->execute();
 

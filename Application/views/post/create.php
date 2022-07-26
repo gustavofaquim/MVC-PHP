@@ -17,7 +17,6 @@
             
           </div>
        
-       
       <button type="submit" name='bt-att' id='bt-att' class="btn btn-primary bt-att">Salvar</button>
       </form><br>
       </div>
@@ -30,15 +29,11 @@
 				.create( document.querySelector( '#texto' ), {
 					
 					licenseKey: '',
-					
-					
-					
+		
 				} )
 				.then( editor => {
 					window.editor = editor;
-			
-					
-					
+		
 					
 				} )
 				.catch( error => {
